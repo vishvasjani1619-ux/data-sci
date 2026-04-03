@@ -45,7 +45,6 @@ public class GlobalExceptionHandler {
     public ErrorResponse handleGlobal(
             Exception ex,
             HttpServletRequest request) {
-
         return new ErrorResponse(LocalDateTime.now(), 500, "INTERNAL_SERVER_ERROR", ex.getMessage(), request.getRequestURI()
         );
     }
