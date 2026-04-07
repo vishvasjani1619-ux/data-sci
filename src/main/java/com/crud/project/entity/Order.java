@@ -3,9 +3,9 @@ package com.crud.project.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-
-@Entity
 @Data
+@Entity
+@Table(name = "orders")
 public class Order {
 
     @Id
