@@ -1,9 +1,11 @@
 package com.crud.project.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 
 @Entity
+@Data
 public class Order {
 
     @Id
@@ -13,7 +15,6 @@ public class Order {
     private String orderName;
 
     @ManyToOne
-    @JoinColumn(name = "users")
+    @JoinColumn(name = "user_id")
     private User user;
-
 }

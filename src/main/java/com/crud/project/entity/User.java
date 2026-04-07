@@ -8,9 +8,9 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import java.util.List;
 
-@Data
 @Entity
 @Table(name = "users")
+@Data
 public class User {
 
     @Id
@@ -29,7 +29,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserStatus status;
 
-    @OneToMany(mappedBy = "users")
-    List<Order> users;
-
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
 }
