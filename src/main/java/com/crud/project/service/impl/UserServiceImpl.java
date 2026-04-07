@@ -8,7 +8,6 @@ import com.crud.project.response.UserResponse;
 import com.crud.project.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,23 +43,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse getUser(Long id) {
-        User user = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        User user = repository.findById(id).
+                orElseThrow(() -> new ResourceNotFoundException("User not found"));
         return convertToResponse(user);
     }
 
     @Override
     public List<UserResponse> getAllUsers() {
-        return repository.findAll()
-                .stream()
-                .map(this::convertToResponse)
-                .collect(Collectors.toList());
+        return repository.findAll().stream().map(this::convertToResponse).
+                collect(Collectors.toList());
     }
 
     @Override
     public UserResponse updateUser(Long id, UserDTO dto) {
-        User existing = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        User existing = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
         existing.setName(dto.getName());
         existing.setEmail(dto.getEmail());
@@ -71,8 +67,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(Long id) {
-        User user = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        User user = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found"));
         repository.delete(user);
     }
 

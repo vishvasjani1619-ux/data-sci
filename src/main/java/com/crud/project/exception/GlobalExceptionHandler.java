@@ -14,38 +14,19 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse handleNotFound(ResourceNotFoundException ex,HttpServletRequest request) {
-
-        return new ErrorResponse(
-                LocalDateTime.now(),
-                404,
-                "NOT_FOUND",
-                ex.getMessage(),
-                request.getRequestURI()
-        );
+        return new ErrorResponse(LocalDateTime.now(),404,"NOT_FOUND",ex.getMessage(),request.getRequestURI());
     }
 
 
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorResponse handleBadRequest(
-            IllegalArgumentException ex,
-            HttpServletRequest request) {
-
-        return new ErrorResponse(
-                LocalDateTime.now(),
-                400,
-                "BAD_REQUEST",
-                ex.getMessage(),
-                request.getRequestURI()
-        );
+    public ErrorResponse handleBadRequest(IllegalArgumentException ex,HttpServletRequest request) {
+        return new ErrorResponse(LocalDateTime.now(),400,"BAD_REQUEST",ex.getMessage(),request.getRequestURI());
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ErrorResponse handleGlobal(
-            Exception ex,
-            HttpServletRequest request) {
-        return new ErrorResponse(LocalDateTime.now(), 500, "INTERNAL_SERVER_ERROR", ex.getMessage(), request.getRequestURI()
-        );
+    public ErrorResponse handleGlobal(Exception ex,HttpServletRequest request) {
+        return new ErrorResponse(LocalDateTime.now(), 500, "INTERNAL_SERVER_ERROR", ex.getMessage(), request.getRequestURI());
     }
 }
