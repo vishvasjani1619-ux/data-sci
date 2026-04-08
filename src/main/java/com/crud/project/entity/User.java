@@ -23,8 +23,8 @@ public class User {
     @Email(message = "Email is Required")
     private String email;
 
-    @Min(value = 18, message = "Age must be >= 18")
-    private Integer age;
+//    @Min(value = 18, message = "Age must be >= 18")
+//    private Integer age;
 
     @Enumerated(EnumType.STRING)
     private UserStatus status;
